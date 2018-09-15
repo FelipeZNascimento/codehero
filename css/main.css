@@ -1,0 +1,187 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-----------------------------------*/
+/*Global & Util classes */
+/*-----------------------------------*/
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+.roboto-light {
+    font-weight:300;
+}
+
+.roboto-regular {
+    font-weight:500;
+}
+
+.roboto-black {
+    font-weight: 900;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
+/*-----------------------------------*/
+/*Specific stylings*/
+/*-----------------------------------*/
+
+#content { 
+    padding: 12px 0px 24px 0; 
+}
+@media screen and (min-width:361px) {
+    #content {
+        padding: 20px 42px;
+        height: 720px;  
+        width: 1280px;
+    }
+}
+
+#page-header {
+    color: #D42026;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+@media screen and (min-width:361px) {
+	#page-header {
+        font-size: 27px;
+        line-height: 32px;
+	}
+}
+
+.busca-marvel {
+    display: inline-block;
+    position: relative;
+}
+.busca-marvel:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-bottom: 4px solid #D42026;
+    width: 54px;
+}
+
+#busca-personagem {
+    margin: 34px 0 34px 0;
+    width: 100%;
+}
+#busca-personagem .titulo {
+    color: #D42026;
+    font-size: 16px;
+    line-height: 19px;
+}
+#busca-personagem input {
+    width: 400px;
+    height: 31px;
+    border: 1px solid #A5A5A5;
+    border-radius: 5px;
+}
+#table-marvel {
+    margin-top: 34px;
+    width: 100%;
+}
+#table-marvel .table-header {
+    border: 0;
+    text-align: left;
+}
+
+#table-marvel th {
+    background-color: #D42026;
+    font-size: 16px;
+    line-height: 19px;
+    color: white;
+    padding: 0 0 0 15px;
+    height: 37px;
+    border-radius: 0;
+    vertical-align: middle;
+}
+.w25 {
+    width: 25%;
+}
+.w50 {
+    width: 50%;
+}
+
+#table-marvel .space {
+    width: 10px;
+}
+.table-content {
+/*    border-bottom: 2px rgba(212, 32, 38, 0.2);*/
+    box-shadow:inset 0px -2px 0px 0px rgba(212, 32, 38, 0.1);
+}
+
+#table-marvel .table-content td {
+    font-size: 21px;
+    color: #4E4E4E;
+    line-height: 24px;
+    padding: 20px 0 20px 15px;
+    height: 72px;
+    vertical-align: middle;
+
+}
+#table-marvel .table-content:hover {
+    color: black;
+    background-color: rgba(212, 32, 38, 0.1);
+}
+
+#footer {
+    position: absolute;
+    background-color: #D42026;
+    bottom: 0;
+    width: 100%;
+    height: 12px;
+}
