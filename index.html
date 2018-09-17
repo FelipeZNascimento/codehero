@@ -2,7 +2,7 @@
 <html lang="pt" ng-app="app">
     <head>
         <title>Code Hero - Objective</title>
-        <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+<!--        <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">-->
         <meta name="description" content="A cool thing made with Glitch">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +12,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
         <script src="js/app.js"></script>
         
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,900">
         <link rel="stylesheet" href="css/main.css">        
 
     </head>
     <body ng-controller="CodeHero">
         <div id="content">
-            
             <div id="page-header"
                  class="left">
                 <span id="busca-marvel" 
                       class="busca-marvel roboto-black left">Busca Marvel</span> 
                 <span id="teste-front-end" 
                       class="roboto-light left">Teste Front-End</span>
-                <span class="hide-on-small-only right">
+                <span class="hide-on-mobile right">
                     Felipe Zanon
                 </span>
             </div>
@@ -35,29 +35,50 @@
                     Nome do Personagem
                 </span>
                 <form>
-                    <input type="text" class="left browser-default">
+                    <input type="text" 
+                           class="left browser-default"
+                           ng-model="searchCharacter"
+                           ng-change="searchHero(searchCharacter)">
                 </form>
             </div>
             <table id="table-marvel">
                 <thead>
                     <tr class="table-header">
                         <th class="roboto-regular w25">Personagem</th>
-                        <th class="space" style="background-color: white;">&nbsp;</th>
-                        <th class="roboto-regular w25">Séries</th>
-                        <th class="space" style="background-color: white;">&nbsp;</th>
-                        <th class="roboto-regular w50">Eventos</th>
+                        <th class="space hide-on-mobile" style="background-color: white;">&nbsp;</th>
+                        <th class="roboto-regular w25 hide-on-mobile ">Séries</th>
+                        <th class="space hide-on-mobile" style="background-color: white;">&nbsp;</th>
+                        <th class="roboto-regular w50 hide-on-mobile">Eventos</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-content">
-                        <td class="roboto-regular w25">Personagem</td>
-                        <td class="space">&nbsp;</td>
-                        <td class="roboto-regular w25">Séries</td>
-                        <td class="space">&nbsp;</td>
-                        <td class="roboto-regular w50">Eventos</td>
+                    <tr class="table-content" ng-repeat="character in characters">
+                        <td class="roboto-regular w25">{{character.name}}</td>
+                        <td class="space hide-on-mobile">&nbsp;</td>
+                        <td class="roboto-regular w25 hide-on-mobile table-text">
+                            <span ng-repeat="serie in character.series.items | limitTo:3" class="table-line-text">{{serie.name}}<br></span>
+                        </td>
+                        <td class="space hide-on-mobile">&nbsp;</td>
+                        <td class="roboto-regular w50 hide-on-mobile table-text">
+                            <span ng-repeat="event in character.events.items | limitTo:3">{{event.name}}<br></span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+            <div id="pages">
+                <div id="page-selector">
+                    <i class="fas fa-caret-left fa-lg"
+                       ng-click="changePage(selectedPage - 1)"
+                       ng-class="selectedPage == 1 ? 'disabled' : ''"></i>
+                    <div class="page-number"
+                         ng-class="selectedPage == page ? 'active' : ''"
+                         ng-repeat="page in pages track by $index"
+                         ng-click="changePage(page)">{{page}}</div>
+                    <i class="fas fa-caret-right fa-lg"
+                       ng-click="changePage(selectedPage + 1)"
+                       ng-class="selectedPage == pages.length ? 'disabled' : ''"></i>
+                </div>
+            </div>
         </div>
         <div id="footer"></div>
     </body>
