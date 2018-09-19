@@ -41,30 +41,29 @@
                            ng-change="searchHero(searchCharacter)">
                 </form>
             </div>
-            <table id="table-marvel">
-                <thead>
-                    <tr class="table-header">
-                        <th class="roboto-regular w25">Personagem</th>
-                        <th class="space hide-on-mobile" style="background-color: white;">&nbsp;</th>
-                        <th class="roboto-regular w25 hide-on-mobile ">Séries</th>
-                        <th class="space hide-on-mobile" style="background-color: white;">&nbsp;</th>
-                        <th class="roboto-regular w50 hide-on-mobile">Eventos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table-content" ng-repeat="character in characters">
-                        <td class="roboto-regular w25">{{character.name}}</td>
-                        <td class="space hide-on-mobile">&nbsp;</td>
-                        <td class="roboto-regular w25 hide-on-mobile table-text">
-                            <span ng-repeat="serie in character.series.items | limitTo:3" class="table-line-text">{{serie.name}}<br></span>
-                        </td>
-                        <td class="space hide-on-mobile">&nbsp;</td>
-                        <td class="roboto-regular w50 hide-on-mobile table-text">
-                            <span ng-repeat="event in character.events.items | limitTo:3">{{event.name}}<br></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="table-header" class="left">
+                <div class="characters left">Personagem</div>
+                <div class="series left hide-on-mobile">Séries</div>
+                <div class="events left hide-on-mobile">Eventos</div>
+            </div>
+            <div id="table-content" class="left" ng-repeat="character in characters">
+                <div class="characters left">
+                    <img ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}">
+                    <div class="characters-text">
+                        {{character.name}}
+                    </div>
+                </div>
+                <div class="series left hide-on-mobile">
+                    <span ng-repeat="serie in character.series.items | limitTo:3" class="text">
+                        {{serie.name}}<br>
+                    </span>
+                </div>
+                <div class="events left hide-on-mobile">
+                    <span ng-repeat="event in character.events.items | limitTo:3" class="text">
+                        {{event.name}}<br>
+                    </span>
+                </div>
+            </div>
             <div id="pages">
                 <div id="page-selector">
                     <i class="fas fa-caret-left fa-lg"
