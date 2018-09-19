@@ -46,7 +46,11 @@
                 <div class="series left hide-on-mobile">Séries</div>
                 <div class="events left hide-on-mobile">Eventos</div>
             </div>
-            <div id="table-content" class="left" ng-repeat="character in characters">
+            <div id="table-content" 
+                 ng-if="!loading"
+                 class="left"
+                 ng-repeat="character in characters"
+                 ng-click="openModal(character.id)">
                 <div class="characters left">
                     <img ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}">
                     <div class="characters-text">
@@ -64,8 +68,13 @@
                     </span>
                 </div>
             </div>
+            <div id="loading"
+                 ng-if="loading">
+                <img src="img/loading.gif" height="50px">
+            </div>
             <div id="pages">
-                <div id="page-selector">
+                <div id="page-selector"
+                     ng-if="pageTotal > 0">
                     <i class="fas fa-caret-left fa-lg"
                        ng-click="changePage(selectedPage - 1)"
                        ng-class="selectedPage == 1 ? 'disabled' : ''"></i>
@@ -78,6 +87,7 @@
                        ng-class="selectedPage == pages.length ? 'disabled' : ''"></i>
                 </div>
             </div>
+            <?php include("character.php"); ?>
         </div>
         <div id="footer"></div>
     </body>
