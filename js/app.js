@@ -44,6 +44,8 @@ app.controller('CodeHero', function($scope, $locale) {
     $scope.searchHero = function(hero) {
         if (hero.length > 2)
             $scope.callMarvelAPI(0, hero);
+        else if (hero.length == 0)
+            $scope.callMarvelAPI(0);
     }
     
     $scope.changePage = function (newPage) {
