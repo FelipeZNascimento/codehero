@@ -9,7 +9,7 @@ html {
   box-sizing: inherit;
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width:414px) {
     .hide-on-mobile {
         display: none !important;
     }
@@ -57,15 +57,13 @@ body {
 
 #content { 
     padding: 20px 42px;
-    height: 720px;  /* Comment this line for a responsive website */
+    height: calc(100vh - 12px);
+    
     width: 1280px;  /* Comment this line for a responsive website */
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
 
-}
-.main-content {
-  flex: 1;
 }
 #loading {
     position: absolute;
@@ -172,9 +170,14 @@ body {
     width: calc(100% - 83px); /* Fixed width to prevent text from going to next line */
 }
 
-#pages {
-    text-align: center;
+#pagination {
+    justify-content: center;
     margin-top: 18px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
 }
 .page-number {
     color: #D42026;
@@ -193,10 +196,10 @@ body {
     color: #D42026;
     background-color: rgba(212, 32, 38, 0.1);
 }
-#pages .fas {
+#pagination .fas {
     cursor: pointer;
 }
-#pages .disabled {
+#pagination .disabled {
     color: #D20A0A;
     opacity: 0.35;
     cursor: default;
@@ -205,25 +208,9 @@ body {
 #footer {
     height: 12px;
     background-color: #D42026;
-/*    position:absolute;*/
+    width:100%;
     bottom:0;
-    width:100%;
-    
-    
-    
-    width:100%;
-/*    height:44px;*/
-/*    padding-top:20px;*/
-/*    background:black;*/
-/*    color:white;*/
-/*
-    font-weight:bold;
-    font-size:24px;
-    text-align:center;
-*/
-/*    position:absolute; Here's what sticks it*/
-    bottom:0;          /*to the bottom of the body/page*/
-    left:0;            /
+    left:0;
 }
 
 /*-----------------------------------*/
@@ -343,11 +330,12 @@ body {
 /*-----------------------------------*/
 /*          Mobile stylings         */
 /*-----------------------------------*/
-@media screen and (max-width:360px) {
+@media screen and (max-width:414px) {
     #content {
         padding: 12px 0px 24px 0;
-        height: 100%;
+        height: calc(100vh - 12px);
         width: 100%;
+        margin: 0;
     }
 	#page-header {
         width: 100%;
@@ -361,6 +349,9 @@ body {
     }
     #busca-personagem input {
         width: 100%;
+    }
+    #pagination {
+        align-items: flex-start;
     }
     .characters {
         width: 100%;

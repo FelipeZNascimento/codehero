@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div id="pages">
+            <div id="pagination">
                 <div id="page-selector"
                      ng-if="pageTotal > 0">
                     <i class="fas fa-caret-left fa-lg"
