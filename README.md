@@ -7,4 +7,4 @@ Some observations:
 * The website is fully responsive. If a device has less than 414px width, it automatically adapts.
 * Just click at any row at the hero tables to enter an inner page with additional info.
 
-### Website hosted at [felipe.zanon.tk/objective/codehero/](felipe.zanon.tk/objective/codehero/)
+### Website hosted at [felipe.zanon.tk/objective/codehero/](https://www.felipe.zanon.tk/objective/codehero/)
