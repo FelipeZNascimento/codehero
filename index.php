@@ -19,58 +19,61 @@
     </head>
     <body ng-controller="CodeHero">
         <div id="content">
-            <div id="page-header"
-                 class="left">
-                <span id="busca-marvel" 
-                      class="busca-marvel roboto-black left">Busca Marvel</span> 
-                <span id="teste-front-end" 
-                      class="roboto-light left">Teste Front-End</span>
-                <span class="hide-on-mobile right">
-                    Felipe Zanon
-                </span>
-            </div>
-            <div id="busca-personagem"
-                 class="left">
-                <span class="titulo">
-                    Nome do Personagem
-                </span>
-                <form>
-                    <input type="text" 
-                           class="left browser-default"
-                           ng-model="searchCharacter"
-                           ng-change="searchHero(searchCharacter)">
-                </form>
-            </div>
-            <div id="table-header" class="left">
-                <div class="characters left">Personagem</div>
-                <div class="series left hide-on-mobile">Séries</div>
-                <div class="events left hide-on-mobile">Eventos</div>
-            </div>
-            <div id="table-content" 
-                 ng-if="!loading"
-                 class="left"
-                 ng-repeat="character in characters"
-                 ng-click="openModal(character.id)">
-                <div class="characters left">
-                    <img ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}">
-                    <div class="characters-text">
-                        {{character.name}}
+            <div class="main-content">
+                <div id="page-header"
+                     class="left">
+                    <span id="busca-marvel" 
+                          class="busca-marvel roboto-black left">Busca Marvel</span> 
+                    <span id="teste-front-end" 
+                          class="roboto-light left">Teste Front-End</span>
+                    <span class="hide-on-mobile right">
+                        Felipe Zanon
+                    </span>
+                </div>
+                <div id="busca-personagem"
+                     class="left">
+                    <span class="titulo">
+                        Nome do Personagem
+                    </span>
+                    <form>
+                        <input type="text" 
+                               class="left browser-default"
+                               ng-model="searchCharacter"
+                               ng-change="searchHero(searchCharacter)">
+                    </form>
+                </div>
+                <div id="table-header" class="left">
+                    <div class="characters left">Personagem</div>
+                    <div class="series left hide-on-mobile">Séries</div>
+                    <div class="events left hide-on-mobile">Eventos</div>
+                </div>
+                <div id="table-content" 
+                     class="left"
+                     ng-repeat="character in characters"
+                     ng-click="openModal(character.id)">
+                    <div class="characters left">
+                        <img ng-src="{{character.thumbnail.path + '.' + character.thumbnail.extension}}">
+                        <div class="characters-text">
+                            {{character.name}}
+                        </div>
+                    </div>
+                    <div class="series left hide-on-mobile">
+                        <span ng-repeat="serie in character.series.items | limitTo:3" class="text">
+                            {{serie.name}}<br>
+                        </span>
+                    </div>
+                    <div class="events left hide-on-mobile">
+                        <span ng-repeat="event in character.events.items | limitTo:3" class="text">
+                            {{event.name}}<br>
+                        </span>
                     </div>
                 </div>
-                <div class="series left hide-on-mobile">
-                    <span ng-repeat="serie in character.series.items | limitTo:3" class="text">
-                        {{serie.name}}<br>
-                    </span>
+                <div id="loading"
+                     ng-if="loading">
+                    <div class="loading-img">
+                        <img src="img/loading.gif" height="50px">
+                    </div>
                 </div>
-                <div class="events left hide-on-mobile">
-                    <span ng-repeat="event in character.events.items | limitTo:3" class="text">
-                        {{event.name}}<br>
-                    </span>
-                </div>
-            </div>
-            <div id="loading"
-                 ng-if="loading">
-                <img src="img/loading.gif" height="50px">
             </div>
             <div id="pages">
                 <div id="page-selector"
@@ -89,6 +92,6 @@
             </div>
             <?php include("character.php"); ?>
         </div>
-        <div id="footer"></div>
     </body>
+    <div id="footer"></div>
 </html>

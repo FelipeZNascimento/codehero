@@ -7,13 +7,16 @@
         </div>
         <div class="main-content">
             <div class="image-description">
-                <img class="image left hide-on-mobile" ng-src="{{selectedCharacter.thumbnail.path + '.' + selectedCharacter.thumbnail.extension}}">
-                <div class="description left">
-                    {{selectedCharacter.description}}
-                    <span ng-show="!selectedCharacter.description">No available description.</span>
+                <div class="description left"
+                     style="background-image: url({{selectedCharacter.thumbnail.path + '.' + selectedCharacter.thumbnail.extension}})">
+                    <span class="description-text"
+                          ng-if="selectedCharacter.description">
+                        {{selectedCharacter.description}}
+                    </span>
+                    
                 </div>
             </div>
-            <div class="additional-info">
+            <div class="additional-info left">
                 <div table="tab-header">
                     <div class="tab roboto-light"
                          ng-class="selectedTab == 0 ? 'active' : ''"
